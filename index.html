@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MADANI ALUMNI BUN - Register Form</title>
+    <style>
+      @font-face {
+        font-family: "switzer";
+        src: url("./assets/fonts/Switzer-Regular.otf") format("opentype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: "switzer";
+        src: url("./assets/fonts/Switzer-Bold.otf") format("opentype");
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "switzer", Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        background-image: url("./assets/images/bg-main.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .logo {
+        max-width: 300px;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 1000px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .form-card {
+        background: #fff5e3;
+        border-radius: 20px;
+        outline: 6px solid rgba(255, 245, 227, 0.2);
+        padding: 30px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        color: #1a237e;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        font-size: 1rem;
+        color: #333;
+        transition: all 0.3s ease;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-control::placeholder {
+        color: #999;
+      }
+
+      .form-control:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+      }
+
+      select.form-control {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='[w3.org](http://www.w3.org/2000/svg)' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a237e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 15px center;
+        padding-right: 40px;
+      }
+
+      .payment-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 25px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+      }
+
+      .payment-detail {
+        padding: 15px;
+      }
+
+      .payment-detail:first-child {
+        border-right: 2px solid #1a237e;
+      }
+
+      .payment-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .payment-label {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .payment-value {
+        color: #1a237e;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .account-name {
+        font-weight: 700;
+        color: #1a237e;
+      }
+
+      .account-number {
+        font-weight: 700;
+        color: #1a237e;
+        font-size: 1rem;
+      }
+
+      .upload-area {
+        position: relative;
+        width: 100%;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.3s ease;
+      }
+
+      .upload-area:hover {
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .upload-area input[type="file"] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+        left: 0;
+        top: 0;
+      }
+
+      .upload-text {
+        color: #666;
+        font-size: 1rem;
+      }
+
+      .upload-icon {
+        color: #1a237e;
+        font-size: 1.2rem;
+      }
+
+      .btn-register {
+        width: 100%;
+        padding: 12px;
+        background: #1a237e;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-register:hover {
+        background: #0d1654;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(26, 35, 126, 0.4);
+      }
+
+      .btn-register:active {
+        transform: translateY(0);
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        body {
+          padding: 15px;
+        }
+
+        .logo {
+          max-width: 200px;
+        }
+
+        .header {
+          margin-top: 300px;
+          margin-bottom: 400px;
+        }
+
+        .form-card {
+          padding: 20px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 15px;
+        }
+
+        .payment-info {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .payment-detail {
+          padding: 15px 10px;
+        }
+
+        .payment-detail:first-child {
+          border-right: none;
+          border-bottom: 2px solid #1a237e;
+        }
+
+        .payment-row {
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .form-control {
+          padding: 12px 15px;
+        }
+
+        .btn-register {
+          padding: 15px;
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .form-card {
+          padding: 15px;
+          border-radius: 15px;
+        }
+
+        .form-group label {
+          font-size: 0.85rem;
+        }
+
+        .form-control {
+          font-size: 0.9rem;
+          padding: 12px;
+        }
+
+        .payment-detail {
+          padding: 10px 5px;
+        }
+
+        .payment-label,
+        .payment-value {
+          font-size: 0.8rem;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-card {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .form-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .upload-area.has-file .upload-text {
+        color: #1a237e;
+        font-weight: 600;
+      }
+
+      .popup-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 20px;
+      }
+
+      .popup-overlay.show {
+        display: flex;
+      }
+
+      .popup-card {
+        width: 100%;
+        max-width: 420px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 26px 22px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        animation: fadeInUp 0.25s ease;
+      }
+
+      .popup-title {
+        color: #1a237e;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .popup-message {
+        color: #444;
+        font-size: 0.98rem;
+        margin-bottom: 20px;
+      }
+
+      .popup-button {
+        background: #1a237e;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 28px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .popup-button:hover {
+        background: #0d1654;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="form-container">
+      <form id="registrationForm">
+        <div class="form-card">
+          <img class="logo" src="./assets/images/madani-logo.png" alt="Madani Logo" />
+          <div class="form-group">
+            <label for="fullName">Nama Lengkap</label>
+            <input type="text" id="fullName" name="fullName" class="form-control" placeholder="A***** F*******" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="university">Asal Universitas</label>
+              <input type="text" id="university" name="university" class="form-control" placeholder="e.g. Universiti Malaya" required />
+            </div>
+
+            <div class="form-group">
+              <label for="whatsapp">Nomor Whatsapp</label>
+              <input type="tel" id="whatsapp" inputmode="numeric" type="number" name="whatsapp" class="form-control" placeholder="e.g. 60**********" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="payment-info">
+            <div class="payment-detail">
+              <div class="payment-row">
+                <span class="payment-label">Malaysia (Ringgit)</span>
+                <span class="payment-value">Maybank</span>
+              </div>
+              <div class="payment-row">
+                <span class="account-name">Aly Zakki Yaza</span>
+                <span class="account-number">1223456789</span>
+              </div>
+            </div>
+
+            <div class="payment-detail">
+              <div class="payment-row">
+                <span class="payment-label">Indonesia (Rupiah)</span>
+                <span class="payment-value">BCA</span>
+              </div>
+              <div class="payment-row">
+                <span class="account-name">Aly Zakki Yaza</span>
+                <span class="account-number">1223456789</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="paymentMethod">Metode Pembayaran</label>
+              <select id="paymentMethod" name="paymentMethod" class="form-control" required>
+                <option value="" disabled selected>Select Payment Method</option>
+                <option value="Maybank">Maybank</option>
+                <option value="BCA">BCA</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="paymentProof">Bukti Pembayaran</label>
+              <div class="upload-area" id="uploadArea">
+                <span class="upload-text">Upload Here</span>
+                <img width="12" src="./assets/images/download.ico" alt="">
+                <input type="file" id="paymentProof" name="paymentProof" accept="image/*,.pdf" required />
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-register">Register</button>
+        </div>
+      </form>
+    </main>
+
+    <div class="popup-overlay" id="successPopup" role="dialog" aria-modal="true" aria-labelledby="successPopupTitle">
+      <div class="popup-card">
+        <h2 class="popup-title" id="successPopupTitle">Success</h2>
+        <p class="popup-message">You have registered successfully!</p>
+        <button type="button" class="popup-button" id="closeSuccessPopup">OK</button>
+      </div>
+    </div>
+
+    <script>
+      const fileInput = document.getElementById("paymentProof");
+      const uploadArea = document.getElementById("uploadArea");
+      const uploadText = uploadArea.querySelector(".upload-text");
+      const successPopup = document.getElementById("successPopup");
+      const closeSuccessPopupButton = document.getElementById("closeSuccessPopup");
+
+      function showSuccessPopup() {
+        successPopup.classList.add("show");
+      }
+
+      function hideSuccessPopup() {
+        successPopup.classList.remove("show");
+      }
+
+      closeSuccessPopupButton.addEventListener("click", hideSuccessPopup);
+      successPopup.addEventListener("click", (event) => {
+        if (event.target === successPopup) {
+          hideSuccessPopup();
+        }
+      });
+
+      fileInput.addEventListener("change", function () {
+        if (this.files && this.files[0]) {
+          uploadText.textContent = this.files[0].name;
+          uploadArea.classList.add("has-file");
+        } else {
+          uploadText.textContent = "Upload Here";
+          uploadArea.classList.remove("has-file");
+        }
+      });
+
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzgLXOh1Aq-36PWxrahEYg7oj-Bhbs8qyfkLYxE0XNGFVb8eZU49QzsU7RzZnByvvdB/exec";
+
+      const form = document.getElementById("registrationForm");
+      const submitButton = form.querySelector(".btn-register");
+      const MAX_FILE_SIZE_MB = 5;
+
+      document.getElementById("registrationForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const fileInput = document.getElementById("paymentProof");
+        const file = fileInput.files[0];
+
+        if (!file) {
+          alert("Please upload payment proof first.");
+          return;
+        }
+
+        if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+          alert(`File is too large. Maximum allowed size is ${MAX_FILE_SIZE_MB}MB.`);
+          return;
+        }
+
+        const reader = new FileReader();
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+
+        reader.onload = async function () {
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          const dataUrl = typeof reader.result === "string" ? reader.result : "";
+          const base64Content = dataUrl.includes(",") ? dataUrl.split(",")[1] : dataUrl;
+
+          data.paymentProof = base64Content;
+          data.paymentProofName = file.name;
+          data.paymentProofMimeType = file.type || "application/octet-stream";
+
+          try {
+            const response = await fetch(scriptURL, {
+              method: "POST",
+              body: new URLSearchParams(data),
+            });
+
+            const responseText = await response.text();
+            if (!response.ok) {
+              throw new Error(responseText || "Upload failed");
+            }
+
+            showSuccessPopup();
+            form.reset();
+            uploadText.textContent = "Upload Here";
+            uploadArea.classList.remove("has-file");
+          } catch (error) {
+            console.error(error);
+            alert("Failed to submit. Please check file size/type and script access.");
+          } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Register";
+          }
+        };
+
+        reader.onerror = function () {
+          submitButton.disabled = false;
+          submitButton.textContent = "Register";
+          alert("Could not read the uploaded file.");
+        };
+
+        reader.readAsDataURL(file);
+      });
+    </script>
+  </body>
+</html>
