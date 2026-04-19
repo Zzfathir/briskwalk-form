@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preload" href="./assets/images/bg-main.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="./assets/images/madani-logo.webp" as="image" fetchpriority="high">
-    <link rel="icon" href="./assets/images/madani-logo.ico" type="image/x-icon">
-    <title>MADANI ALUMNI RUN - Register Form</title>
+    <link rel="preload" href="./assets/images/bg-main.webp" as="image" fetchpriority="high" />
+    <link rel="preload" href="./assets/images/madani-logo.webp" as="image" fetchpriority="high" />
+    <link rel="icon" href="./assets/images/madani-logo.ico" type="image/x-icon" />
+    <title>MADANI ALUMNI RUN - Registration Form</title>
     <style>
       @font-face {
         font-family: "switzer";
@@ -32,10 +32,7 @@
         font-family: "switzer", Tahoma, Geneva, Verdana, sans-serif;
         min-height: 100vh;
         background-image: url("./assets/images/bg-main.png");
-        background-image: image-set(
-          url("./assets/images/bg-main.webp") type("image/webp"),
-          url("./assets/images/bg-main.png") type("image/png")
-        );
+        background-image: image-set(url("./assets/images/bg-main.webp") type("image/webp"), url("./assets/images/bg-main.png") type("image/png"));
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -51,7 +48,55 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
+      }
+
+      .event-subtitle {
+        color: #1a237e;
+        text-align: center;
+        font-size: 1.08rem;
+        margin-bottom: 28px;
+      }
+
+      .event-meta {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        gap: 60px;
+        justify-content: center;
+        margin-top: 35px;
+        margin-bottom: 35px;
+        justify-items: center;
+      }
+
+      .event-meta-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .event-meta-icon {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .event-meta-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3;
+      }
+
+      .event-meta-label {
+        color: #455a64;
+        font-size: 0.8rem;
+      }
+
+      .event-meta-value {
+        color: #1a237e;
+        font-size: 0.86rem;
+        font-weight: 700;
       }
 
       .form-container {
@@ -124,37 +169,49 @@
 
       .payment-info {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 25px;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 10px;
+        grid-template-columns: 190px auto;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        padding: 14px 12px 18px;
+        border-bottom: 2px solid rgba(26, 35, 126, 0.22);
+      }
+
+      .qr-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .qr-image {
+        width: 170px;
+        height: 170px;
+        object-fit: contain;
       }
 
       .payment-detail {
-        padding: 15px;
-      }
-
-      .payment-detail:first-child {
-        border-right: 2px solid #1a237e;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
       }
 
       .payment-row {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
+        display: block;
+        margin-bottom: 0;
       }
 
       .payment-label {
-        color: #666;
-        font-size: 0.9rem;
+        color: #1a237e;
+        font-size: 0.95rem;
       }
 
       .payment-value {
         color: #1a237e;
-        font-weight: 600;
-        font-size: 0.9rem;
+        font-weight: 500;
+        font-size: 0.95rem;
       }
 
       .account-name {
@@ -165,7 +222,7 @@
       .account-number {
         font-weight: 700;
         color: #1a237e;
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
 
       .upload-area {
@@ -232,7 +289,13 @@
       /* Mobile */
       @media (max-width: 768px) {
         body {
-          padding: 15px;
+          padding: 12px;
+          background-position: top center;
+        }
+
+        .form-container {
+          margin-top: 12px;
+          margin-bottom: 20px;
         }
 
         .logo {
@@ -245,7 +308,11 @@
         }
 
         .form-card {
-          padding: 20px;
+          padding: 18px;
+          margin-top: 16px;
+          margin-bottom: 14px;
+          border-radius: 16px;
+          outline-width: 4px;
         }
 
         .form-row {
@@ -253,39 +320,87 @@
           gap: 15px;
         }
 
+        .event-subtitle {
+          margin-bottom: 18px;
+          font-size: 1rem;
+        }
+
+        .event-meta {
+          grid-template-columns: 1fr;
+          gap: 8px;
+          margin-bottom: 18px;
+          justify-items: stretch;
+        }
+
+        .event-meta-item {
+          padding: 6px 0;
+          justify-content: flex-start;
+        }
+
+        .event-meta-icon {
+          width: 24px;
+          height: 24px;
+        }
+
+        .event-meta-label {
+          font-size: 0.74rem;
+        }
+
+        .event-meta-value {
+          font-size: 0.8rem;
+        }
+
         .payment-info {
           grid-template-columns: 1fr;
-          gap: 0;
+          gap: 10px;
+          padding: 14px;
+          text-align: center;
+          justify-items: center;
+        }
+
+        .qr-image {
+          width: 140px;
+          height: 140px;
+        }
+
+        .account-number {
+          font-size: 1.1rem;
         }
 
         .payment-detail {
-          padding: 15px 10px;
-        }
-
-        .payment-detail:first-child {
-          border-right: none;
-          border-bottom: 2px solid #1a237e;
+          padding: 8px 0;
+          width: 100%;
         }
 
         .payment-row {
-          flex-direction: column;
-          gap: 2px;
+          justify-content: center;
+          gap: 6px;
+          flex-wrap: wrap;
         }
 
         .form-control {
           padding: 12px 15px;
         }
 
+        .upload-area {
+          padding: 11px 14px;
+        }
+
         .btn-register {
-          padding: 15px;
+          padding: 14px;
           font-size: 1rem;
         }
       }
 
       @media (max-width: 480px) {
+        body {
+          padding: 10px;
+        }
+
         .form-card {
           padding: 15px;
           border-radius: 15px;
+          outline-width: 3px;
         }
 
         .form-group label {
@@ -298,12 +413,30 @@
         }
 
         .payment-detail {
-          padding: 10px 5px;
+          padding: 6px 0;
+          align-items: center;
+        }
+
+        .qr-image {
+          width: 120px;
+          height: 120px;
         }
 
         .payment-label,
         .payment-value {
           font-size: 0.8rem;
+        }
+
+        .event-meta-label {
+          font-size: 0.7rem;
+        }
+
+        .event-meta-value {
+          font-size: 0.76rem;
+        }
+
+        .btn-register {
+          border-radius: 8px;
         }
       }
 
@@ -394,6 +527,42 @@
             <source srcset="./assets/images/madani-logo.webp" type="image/webp" />
             <img class="logo" src="./assets/images/madani-logo.png" alt="Madani Logo" />
           </picture>
+
+          <div class="event-meta">
+            <div class="event-meta-item">
+              <picture>
+                <source srcset="./assets/images/calendar.webp" type="image/webp" />
+                <img class="event-meta-icon" src="./assets/images/calendar.png" alt="Registration duration icon" />
+              </picture>
+              <div class="event-meta-text">
+                <span class="event-meta-label">Registration Duration</span>
+                <span class="event-meta-value">13 Mar 2026 - 03 May 2026</span>
+              </div>
+            </div>
+
+            <div class="event-meta-item">
+              <picture>
+                <source srcset="./assets/images/location.webp" type="image/webp" />
+                <img class="event-meta-icon" src="./assets/images/location.png" alt="Venue icon" />
+              </picture>
+              <div class="event-meta-text">
+                <span class="event-meta-label">Venue</span>
+                <span class="event-meta-value">Dataran Putrajaya</span>
+              </div>
+            </div>
+
+            <div class="event-meta-item">
+              <picture>
+                <source srcset="./assets/images/time.webp" type="image/webp" />
+                <img class="event-meta-icon" src="./assets/images/time.png" alt="Event duration icon" />
+              </picture>
+              <div class="event-meta-text">
+                <span class="event-meta-label">Event Duration</span>
+                <span class="event-meta-value">TBA</span>
+              </div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="fullName">Nama Lengkap</label>
             <input type="text" id="fullName" name="fullName" class="form-control" placeholder="A***** F*******" required />
@@ -414,25 +583,25 @@
 
         <div class="form-card">
           <div class="payment-info">
-            <div class="payment-detail">
-              <div class="payment-row">
-                <span class="payment-label">Malaysia (Ringgit)</span>
-                <span class="payment-value">Maybank</span>
-              </div>
-              <div class="payment-row">
-                <span class="account-name">Aly Zakki Yaza</span>
-                <span class="account-number">1223456789</span>
-              </div>
+            <div class="qr-wrap">
+              <picture>
+                <source srcset="./assets/images/qr.webp" type="image/webp" />
+                <img class="qr-image" src="./assets/images/qr.png" alt="Payment QR code" />
+              </picture>
             </div>
 
             <div class="payment-detail">
               <div class="payment-row">
-                <span class="payment-label">Indonesia (Rupiah)</span>
-                <span class="payment-value">BCA</span>
+                <span class="payment-label">Malaysia (Ringgit)</span>
               </div>
               <div class="payment-row">
-                <span class="account-name">Aly Zakki Yaza</span>
-                <span class="account-number">1223456789</span>
+                <span class="account-name">Fio Rafi Hafizh Fauzi</span>
+              </div>
+              <div class="payment-row">
+                <span class="payment-value">CIMB</span>
+              </div>
+              <div class="payment-row">
+                <span class="account-number">7649807687</span>
               </div>
             </div>
           </div>
@@ -451,7 +620,7 @@
               <label for="paymentProof">Bukti Pembayaran</label>
               <div class="upload-area" id="uploadArea">
                 <span class="upload-text">Upload Here</span>
-                <img width="12" src="./assets/images/download.ico" alt="">
+                <img width="12" src="./assets/images/download.ico" alt="" />
                 <input type="file" id="paymentProof" name="paymentProof" accept="image/*,.pdf" required />
               </div>
             </div>
